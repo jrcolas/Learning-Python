@@ -1,0 +1,4 @@
+This is an introduction to learning Python.
+
+Website:
+https://learnpythonthehardway.org/book/ex1.html
