@@ -26,25 +26,24 @@ print("3. Multiplication")
 print("4. Division")
 
 # Read choice input from user
-choice = input("Your choice [1/2/3/4]: ")
+choice = raw_input("Your choice [1/2/3/4]: ")
+print "Test: choice = ", choice
 
 # Input values from user
-firstVal = int(input("Enter first number: "))
-secondVal = int(input("Enter second number: "))
+firstVal = int(raw_input("Enter first number: "))
+secondVal = int(raw_input("Enter second number: "))
 
 # Calculations
-if choice == "1":
-    print(firstVal, "+", secondVal, "=", firstVal + secondVal)
+if (choice == '1'):
+    print firstVal, "+", secondVal, "=", addition(firstVal, secondVal)
 
 elif choice == "2":
-    print(firstVal, "-", secondVal, "=", subtraction(firstVal, secondVal))
+    print firstVal, "-", secondVal, "=", subtraction(firstVal, secondVal)
 
 elif choice == "3":
-    print(firstVal, "*", secondVal, "=", multiplication(firstVal, secondVal))
+    print firstVal, "*", secondVal, "=", multiplication(firstVal, secondVal)
 
 elif choice == "4":
-    print(firstVal, "/", secondVal, "=", division(firstVal, secondVal))
+    print firstVal, "/", secondVal, "=", division(firstVal, secondVal)
 else:
-    print("Val1:", firstVal)
-    print("Val2:", secondVal)
-    print("Invalid input. Try again.")
+    print "Invalid input. Try again."
