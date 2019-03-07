@@ -30,8 +30,8 @@ choice = raw_input("Your choice [1/2/3/4]: ")
 print "Test: choice = ", choice
 
 # Input values from user
-firstVal = int(raw_input("Enter first number: "))
-secondVal = int(raw_input("Enter second number: "))
+firstVal = float(raw_input("Enter first number: "))
+secondVal = float(raw_input("Enter second number: "))
 
 # Calculations
 if (choice == '1'):
