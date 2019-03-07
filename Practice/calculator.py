@@ -24,17 +24,22 @@ print("1. Addition")
 print("2. Subtraction")
 print("3. Multiplication")
 print("4. Division")
+print("5. Quit")
 
 # Read choice input from user
 choice = raw_input("Your choice [1/2/3/4]: ")
-print "Test: choice = ", choice
 
+if choice == "5":
+    print "Exiting..."
+    quit()
+
+else:
 # Input values from user
-firstVal = float(raw_input("Enter first number: "))
-secondVal = float(raw_input("Enter second number: "))
+    firstVal = float(raw_input("Enter first number: "))
+    secondVal = float(raw_input("Enter second number: "))
 
 # Calculations
-if (choice == '1'):
+if choice == "1":
     print firstVal, "+", secondVal, "=", addition(firstVal, secondVal)
 
 elif choice == "2":
@@ -45,5 +50,6 @@ elif choice == "3":
 
 elif choice == "4":
     print firstVal, "/", secondVal, "=", division(firstVal, secondVal)
+
 else:
     print "Invalid input. Try again."
