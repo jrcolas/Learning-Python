@@ -14,7 +14,6 @@
 
 # The game will not end until they guessed it wrong.
 
-from unicodedata import name
 from art import logo
 from art import vs
 from game_data import data
@@ -35,12 +34,47 @@ print(vs)
 print(f"Against B: {choice_b['name']}, {choice_b['description']}, from {choice_b['country']}")
 answer = input("Who has more followers? Type 'A' or 'B': ").lower()
 
+user_choice = []
+current_score = 0
+
 if answer == "a":
     print("Something")
+    higher_choice = choice_a
+    lower_choice = choice_b
+
+    hc_follows = int(higher_choice['follower_count'])
+    lc_follows = int(lower_choice['follower_count'])
+
+    if  hc_follows > lc_follows:
+        current_score += 1
+        print(f"You're right! Current score is {current_score}")
+    elif hc_follows == lc_follows:
+        current_score += 1
+        print(f"That one's on us. Current score is {current_score}")
+    else:
+        print(f"Sorry, that's wrong. Final score: {current_score}")
+
 elif answer == "b":
     print("something else")
+    higher_choice = choice_b
+    lower_choice = choice_a
+
+    hc_follows = int(higher_choice['follower_count'])
+    lc_follows = int(lower_choice['follower_count'])
+
+    if  hc_follows > lc_follows:
+        current_score += 1
+        print(f"You're right! Current score is {current_score}")
+    elif hc_follows == lc_follows:
+        current_score += 1
+        print(f"That one's on us. Current score is {current_score}")
+    else:
+        print(f"Sorry, that's wrong. Final score: {current_score}")
 else:
     print("Messed up again!")
+
+
+
 
 # for entry in data:
 #     print(entry["name"])
