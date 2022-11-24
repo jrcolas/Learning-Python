@@ -22,76 +22,94 @@ import os
 import random
 
 ################# Start Screen #########################
+
+
+def prompt_user(a, b):
+    ### TEST PRINT STATEMENT  ###########
+    print(f"Choice A: {a['follower_count']}, Choice B: {b['follower_count']}")
+    ### TEST PRINT STATEMENT END  ###########
+    print(f"Compare A: {a['name']}, {a['description']}, from {a['country']}.")
+    print(vs)
+    print(f"Against B: {b['name']}, {b['description']}, from {b['country']}")
+
+    answer = input("Who has more followers? Type 'A' or 'B': ").lower()
+    return answer
+
+
+user_choice = []
+current_score = 0
+game_over = False
+
 print(logo)
 
 choice_a = random.choice(data)
 choice_b = random.choice(data)
+    
 
-# print(choice_a["name"])
+def compare_followers(a, b):
+    """Takes in the selected choice and the unselected choice to compare the numbers of the 
+    followers each choice have. Returns a set value depending on whether the correct choice 
+    made or not."""
+    hc_follows = int(a['follower_count'])
+    lc_follows = int(b['follower_count'])
 
-print(f"Compare A: {choice_a['name']}, {choice_a['description']}, from {choice_a['country']}.")
-print(vs)
-print(f"Against B: {choice_b['name']}, {choice_b['description']}, from {choice_b['country']}")
-answer = input("Who has more followers? Type 'A' or 'B': ").lower()
+    if  hc_follows > lc_follows:
+        return 0 # Zero = Correct choice made
+    elif hc_follows == lc_follows:
+        return 1 # One = Same choice made or same number of followers
+    else:
+        return 2 # Two = Incorrect choice made.
 
-user_choice = []
-current_score = 0
+prompt_answer = prompt_user(choice_a, choice_b)
 
-if answer == "a":
-    print("Something")
+while not game_over:
     higher_choice = choice_a
     lower_choice = choice_b
 
-    hc_follows = int(higher_choice['follower_count'])
-    lc_follows = int(lower_choice['follower_count'])
+    while prompt_answer == "a":
+        result = compare_followers(higher_choice, lower_choice)
 
-    if  hc_follows > lc_follows:
-        current_score += 1
-        print(f"You're right! Current score is {current_score}")
-    elif hc_follows == lc_follows:
-        current_score += 1
-        print(f"That one's on us. Current score is {current_score}")
-    else:
-        print(f"Sorry, that's wrong. Final score: {current_score}")
+        if result == 0:
+            current_score += 1
+            print(f"You're right! Current score is {current_score}")
 
-elif answer == "b":
-    print("something else")
-    higher_choice = choice_b
-    lower_choice = choice_a
+            choice_b = random.choice(data)
 
-    hc_follows = int(higher_choice['follower_count'])
-    lc_follows = int(lower_choice['follower_count'])
+            prompt_answer = prompt_user(higher_choice, choice_b)
 
-    if  hc_follows > lc_follows:
-        current_score += 1
-        print(f"You're right! Current score is {current_score}")
-    elif hc_follows == lc_follows:
-        current_score += 1
-        print(f"That one's on us. Current score is {current_score}")
-    else:
-        print(f"Sorry, that's wrong. Final score: {current_score}")
-else:
-    print("Messed up again!")
+        elif result == 1:
+            current_score += 1
+            print(f"That one's on us. Current score is {current_score}")
+            choice_b = random.choice(data)
+
+            prompt_answer = prompt_user(higher_choice, choice_b)    
+        else:
+            print(f"Sorry, that's wrong. Final score: {current_score}")
+            game_over = True
+            break
 
 
+    while prompt_answer == "b":
+        # higher_choice = choice_b
+        # lower_choice = choice_a
 
+        result = compare_followers(higher_choice, lower_choice)
 
-# for entry in data:
-#     print(entry["name"])
+        if result == 0:
+            current_score += 1
+            print(f"You're right! Current score is {current_score}")
 
-# ###################### Win Screen ######################## 
-# os.system('clear')
+            choice_b = random.choice(data)
 
-# print(logo)
-# print("You're right! Current score is {score}")
+            prompt_answer = prompt_user(higher_choice, choice_b)
 
-# print("Compare A: wonChoiceA, choice A description, from choice A country.")
-# print(vs)
-# print("Against B: wonChoiceB, choice B Description, from choice B Country")
-# input("Who has more followers? Type 'A' or 'B': ").lower()
+        elif result == 1:
+            current_score += 1
+            print(f"That one's on us. Current score is {current_score}")
+            choice_b = random.choice(data)
 
-# ###################### Loss Screen ######################## 
-# os.system('clear')
-
-# print(logo)
-# print("Sorry, that's wrong. Final score: {score}")
+            prompt_answer = prompt_user(higher_choice, choice_b)    
+        else:
+            print(f"Sorry, that's wrong. Final score: {current_score}")
+            game_over = True
+            break
