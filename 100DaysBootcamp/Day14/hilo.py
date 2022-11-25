@@ -5,7 +5,7 @@ import os
 import random
 
 
-#### Functions
+# Functions
 
 def format_data(account):
     """Format the account data into a printable format."""
@@ -14,19 +14,19 @@ def format_data(account):
     country = account['country']
     return f"{name}, {desc}, from {country}"
 
+
 def compare_followers(guess, a, b):
     """Takes in the selected choice and the unselected choice to compare the numbers of the 
     followers each choice have. Returns a set value depending on whether the correct choice 
     made or not."""
 
-    if  a > b:
+    if a > b:
         return guess == "a"
     else:
         return guess == "b"
 
 
-################# Start Screen #########################
-
+# Start Program
 user_choice = []
 current_score = 0
 game_over = False
@@ -43,13 +43,13 @@ while not game_over:
     while choice_a == choice_b:
         choice_b = random.choice(data)
         
-    # Print comparision prompt
+    # Print comparison prompt
     print(f"Compare A: {format_data(choice_a)}.")
     print(vs)
     print(f"Against B: {format_data(choice_b)}.")
 
     # Ask user for a guess
-    guess = guess = input("Who has more followers? Type 'A' or 'B': ").lower()
+    guess = input("Who has more followers? Type 'A' or 'B': ").lower()
 
     # Check if the user is correct
     ## Get follower count of each account
