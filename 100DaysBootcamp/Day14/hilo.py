@@ -1,25 +1,8 @@
-# Print the logo at the start of the game
-
-# Ask the user to compare a random choice A from another random choice B
-
-# Once they type A or B, clear the screen, reprint the logo and underneath that,
-    # if they guessed wrong, 
-        # tell them they guessed wrong
-        # print the score
-        # end the game.
-    # if they guessed right
-        # Tell them they guessed right, and print their current score (increment by 1)
-        # Compare the correct choice from the previous prompt with a new random selection.
-            # Not said, but make it so that the same selection isn't selected for A and B
-
-# The game will not end until they guessed it wrong.
-
 from art import logo, vs
 from game_data import data
 
 import os
 import random
-
 
 
 #### Functions
