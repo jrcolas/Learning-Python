@@ -6,7 +6,7 @@ COLORS = ["red", "orange", "yellow", "green", "blue", "purple"]
 STARTING_MOVE_DISTANCE = 5
 MOVE_INCREMENT = 10
 
-RANDOM_X = random.randint(-300, 300)
+RANDOM_X = 300
 RANDOM_Y = random.randint(-230, 230)
 
 

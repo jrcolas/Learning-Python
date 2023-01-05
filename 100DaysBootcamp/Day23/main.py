@@ -15,7 +15,7 @@ car0 = CarManager()
 car0.hideturtle()
 my_score = Scoreboard()
 all_cars = []
-game_loop = 0
+# game_loop = 0
 
 
 # Make the turtle move
@@ -29,7 +29,7 @@ while game_is_on:
     time.sleep(car0.move_speed)
     screen.update()
 
-    pos_x = 300
+    #pos_x = 300
     pos_y = random.randint(-250, 250)
 
     # Reset turtle position when it reaches top
@@ -40,12 +40,13 @@ while game_is_on:
     if my_turtle.new_level:
         my_score.level_up()
         my_turtle.new_level = False
-        car0.move_speed *= 0.9
+        car0.move_speed *= 0.8
 
     # Create cars and make them move
+    game_loop = random.randint(1, 6)
     if game_loop == 6:
         carX = CarManager()
-        carX.setpos(pos_x, pos_y)
+        carX.setpos(carX.xcor(), pos_y)
         all_cars.append(carX)
 
         game_loop = 0
@@ -53,7 +54,7 @@ while game_is_on:
     for car in all_cars:
         car.move()
         # Detect collision with cars
-        if my_turtle.distance(car) < 25:
+        if my_turtle.distance(car) < 21:
             my_score.game_over()
             game_is_on = False
 
