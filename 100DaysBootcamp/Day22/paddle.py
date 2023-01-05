@@ -12,6 +12,7 @@ class Paddle(Turtle):
         self.goto(location)
 
     def up(self):
+        print("Up is being pressed")
         new_y = self.ycor() + 20
         self.goto(self.xcor(), new_y)
 
