@@ -15,19 +15,19 @@ all_x = data.x.to_list()
 all_y = data.y.to_list()
 
 answered_list = []
-states_to_learn = []
+#states_to_learn = []
 
 while len(answered_list) != 50:
     answer_state = (screen.textinput(title=f"{len(answered_list)}/50 States Correct", prompt="Guess a state below")).title()
 
     if answer_state == "Exit":
-        for state in all_states:
-            if state not in answered_list:
-                states_to_learn.append(state)
-
+        # # Day 26 List Comprehension Changes
+        # for state in all_states:
+        #     if state not in answered_list:
+        #         states_to_learn.append(state)
+        states_to_learn = [state for state in all_states if state not in answered_list]
         stl = pandas.DataFrame(states_to_learn)
         stl.to_csv("states_to_learn.csv")
-
         break
     if answer_state in answered_list:
         pass
