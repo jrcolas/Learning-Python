@@ -27,6 +27,27 @@ data = pandas.read_csv("nato_phonetic_alphabet.csv")
 phonetic_alphabet = {row.letter: row.code for (index, row) in data.iterrows()}
 
 # 2. Create a list of the phonetic code words from a word that the user inputs.
-word = input(f"Please type the word you want to spell: ")
-result = [phonetic_alphabet[letter] for letter in word]
-print(result)
+valid_input = False
+while not valid_input:
+    word = input(f"Please type the word you want to spell: ").upper()
+    try:
+        result = [phonetic_alphabet[letter] for letter in word]
+    except KeyError:
+        print("Sorry, only letters in the alphabet please.")
+    else:
+        valid_input = True
+        print(result)
+
+# # Or....
+# def generate_phonetic():
+#     word = input(f"Please type the word you want to spell: ").upper()
+#     try:
+#         result = [phonetic_alphabet[letter] for letter in word]
+#     except KeyError:
+#         print("Sorry, only letters in the alphabet please.")
+#         generate_phonetic()
+#     else:
+#         valid_input = True
+#         print(result)
+#
+# generate_phonetic()
