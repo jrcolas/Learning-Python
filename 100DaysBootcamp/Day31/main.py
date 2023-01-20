@@ -8,7 +8,7 @@ BACKGROUND_COLOR = "#B1DDC6"
 
 # ------------------------------------------ PICK RANDOM WORD --------------------------------------------- #
 data = pandas.read_csv("./data/french_words.csv")
-df = pandas.DataFrame(data).to_dict(orient="records")
+df = data.to_dict(orient="records")
 #print(df)
 
 
@@ -16,14 +16,12 @@ def random_word():
     random_pick = random.choice(df)
     french = random_pick["French"]
     english = random_pick["English"]
-    labels_front(french)
+    labels(french)
 
 
-def labels_front(word):
-    canvas_front.delete("word_lbl")
-    canvas_front.delete("title_lbl")
-    canvas_front.create_text((400, 150), text="French", font=("Arial", 40, "italic"), tags="title_lbl")
-    canvas_front.create_text((400, 283), text=word, font=("Arial", 60, "bold"), tags="word_lbl")
+def labels(word):
+    canvas_front.itemconfig(card_title, text="French")
+    canvas_front.itemconfig(card_word, text=word)
 
 # random_word()
 
@@ -31,7 +29,7 @@ def labels_front(word):
 # ---------------------------------------------- UI SETUP ------------------------------------------------- #
 window = Tk()
 window.title("Flashy")
-window.config(width=800, height=526, bg=BACKGROUND_COLOR, padx=50, pady=50)
+window.config(bg=BACKGROUND_COLOR, padx=50, pady=50)
 
 # Images
 card_front_img = PhotoImage(file="./images/card_front.png")
@@ -42,8 +40,8 @@ wrong_img = PhotoImage(file="./images/wrong.png")
 canvas_front = Canvas(width=800, height=526, highlightthickness=0, bg=BACKGROUND_COLOR)
 canvas_front.grid(column=0, row=0, columnspan=2)
 canvas_front.create_image(400, 263, image=card_front_img)
-canvas_front.create_text((400, 150), text="Title", font=("Arial", 40, "italic"), tags="title_lbl")
-canvas_front.create_text((400, 283), text="Word", font=("Arial", 60, "bold"), tags="word_lbl")
+card_title = canvas_front.create_text((400, 150), text="", font=("Arial", 40, "italic"), tags="title_lbl")
+card_word = canvas_front.create_text((400, 283), text="", font=("Arial", 60, "bold"), tags="word_lbl")
 
 
 # Buttons
@@ -55,5 +53,7 @@ right_btn = Button(image=right_img, highlightthickness=0, bd=0)
 right_btn.config(command=random_word)
 right_btn.grid(column=1, row=1)
 
+
+random_word()
 
 window.mainloop()
