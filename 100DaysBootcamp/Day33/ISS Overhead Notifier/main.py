@@ -3,12 +3,14 @@ from datetime import datetime
 import math
 import smtplib
 import time
+import os
+from dotenv import load_dotenv
 
-
+load_dotenv("C:/Users/colasf/Coding/ENVs/.env")
 MY_LAT = 25.761681 # Your latitude
 MY_LONG = -80.191788 # Your longitude
-USERNAME = "ljbo####@gmail.com"
-PASSWORD = "crxxdlxxcnvyrmml"
+USERNAME = os.getenv("EMAIL")
+PASSWORD = os.getenv("E_PASSWORD")
 
 # MY_LAT = -39.761681 # Your test latitude
 # MY_LONG = 67.191788 # Your test longitude

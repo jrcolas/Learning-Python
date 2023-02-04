@@ -20,7 +20,7 @@ smtplib.SMTP("smtp.gmail.com", port=587)
 # import smtplib
 #
 # my_email = "ljbo####@gmail.com"
-# my_password = "kongklqrtskvvqib"
+# my_password = "kongertertklqasdrasdfsajfghgfdfsadftsasdasdkvvqadsadasdib"
 #
 # with smtplib.SMTP("smtp.gmail.com") as connection:
 #     connection.starttls()
@@ -48,9 +48,12 @@ smtplib.SMTP("smtp.gmail.com", port=587)
 import random
 import datetime as dt
 import smtplib
+import os
+from dotenv import load_dotenv
 
-my_email = "ljbo#####@gmail.com"
-my_password = "crxxdlxxcnvyrmml"
+load_dotenv("C:/Users/colasf/Coding/ENVs/.env")
+my_email = os.getenv("EMAIL")
+my_password = os.getenv("E_PASSWORD")
 
 
 # Display the quote if the day to send is today
@@ -72,7 +75,7 @@ if day_of_week == 5:
         connection.login(user=my_email, password=my_password)
         connection.sendmail(
             from_addr=my_email,
-            to_addrs="ljbo####@yahoo.com",
+            to_addrs=os.getenv("EMAIL"),
             msg=f"Subject: Your Weekly Thingy\n\n{msg_body}"
         )
 
